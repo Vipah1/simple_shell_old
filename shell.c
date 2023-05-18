@@ -6,15 +6,17 @@
  */
 int main(void)
 {
-  char buf[BUFSIZE];
+  char *cmd;
+  size_t bufsize = 0;
   while (1)
     {
       _prompt();
-      if (read_input(buf, BUFSIZE) == -1)
+      cmd = read_input(&bufsize);
+      if (cmd == NULL)
 	{
-	  exit(EXIT_FAILURE);
+	  break;
 	}
-      exec_cmd(buf);
+      exec_cmd(cmd);
     }
   return (0);
 }

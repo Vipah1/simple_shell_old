@@ -1,29 +1,32 @@
 #include "shell.h"
 /**
  * read_input - Function that reads input from the user
- * @buf: the input to read
+ * 
  * @bufsize: the size or length of the input
  * Return: Returns input from the user
  */
-int read_input(char *buf, size_t bufsize)
+char read_input(size_t *bufsize)
 {
+  char *input = NULL;
   ssize_t nread;
-  nread = getline(&buf, &bufsize, stdin);
+  nread = getline(&input, bufsize, stdin);
   if(nread == -1)
     {
       /*handle end-of-file*/
       if(feof(stdin))
 	{
+	  free(input);
 	  _putchar('\n');
-	  return (-1);
+	  return (NULL);
 	}
       else
 	{
 	  perror("getline error");
-	  return (-1);
+	  exit(EXIT_FAILURE);
 	}
     }
-  /* removes trailing new line characters */
-  buf[strcspn(buf, "\n")] = '\0';
-  return (0);
+  /* removes trailing new line character */
+  if (input[nread - 1] == '\n')
+    input[nread - 1] = '\0';
+  return (input);
 }

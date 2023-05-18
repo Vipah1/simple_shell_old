@@ -10,7 +10,7 @@
 #define BUFSIZE 1024
 
 void _prompt(void);
-int read_input(char *buf, size_t bufsize);
+char read_input(size_t *bufsize);
 void exec_cmd(char *cmd);
 int _putchar(char c);
 
