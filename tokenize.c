@@ -1,16 +1,97 @@
 #include "shell.h"
 
 /**
- * _realloc - 
+ * _realloc - reallocate a memo block with malloc+free
+ * @ptr: pointer to the previous allocated memory
+ * @old_size: old size
+ * @new_size: new size
+ * Return: NULL or new dest
  */
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+{
+	unsigned int i;
+	char *dest;
+	char *src;
+
+	if (new_size == old_size)
+		return (ptr);
+
+	if (ptr == NULL)
+	{
+		ptr = malloc(new_size);
+		return (ptr);
+	}
+
+	if (new_size == 0 && ptr != NULL)
+	{
+		free(ptr);
+		return (NULL);
+	}
+
+	dest = malloc(new_size);
+	src = ptr;
+	if (dest == NULL)
+		return (NULL);
+
+	if (new_size > old_size)
+	{
+		for (i = 0; i < old_size; i++)
+			dest[i] = src[i];
+		free(ptr);
+		for (i = old_size; i < new_size; i++)
+			dest[i] = src[i];
+	}
+	if (new_size < old_size)
+	{
+		for (i = 0; i < new_size; i++)
+			dest[i] = src[i];
+		free(ptr);
+	}
+	return (dest);
+}
 
 /**
- * _strdup - 
+ * _strdup - duplicates a string
+ * @str: string
+ * Return: result string
  */
+char *_strdup(char *str)
+{
+	char *result;
+	int i = 0;
+
+	if (str == NULL)
+		return (NULL);
+
+	result = malloc(_strlen(str) + 1);
+	if (result == NULL)
+	{
+		perror("malloc");
+		exit(EXIT_FAILURE);
+	}
+	while (str[i] != '\0')
+	{
+		result[i] = str[i];
+		i++;
+	}
+	result[i] = '\0';
+
+	return (result);
+}
 
 /**
- * _strlen - 
+ * _strlen - returns the length of a string
+ * @s: string
+ * Return: the length
  */
+int _strlen(char *s)
+{
+	int i;
+	for (i = 0; s[i] != '\0'; i++)
+	{
+	}
+	return (i);
+}
 
 /**
  * tokenize - splits a string
