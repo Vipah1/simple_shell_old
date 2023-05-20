@@ -6,26 +6,27 @@
  */
 void exec_cmd(char *cmd)
 {
-  pid_t pid;
-  int status;
-  pid = fork();
-  if (pid == -1)
-    {
-      perror("fork");
-      exit(EXIT_FAILURE);
-    }
-  if (pid == 0)
-    {
-      /*child process starts here */
-      if (execve(cmd, NULL, environ) == -1)
+	pid_t pid;
+	int status;
+
+	pid = fork();
+	if (pid == -1)
 	{
-	  perror("execve");
-	  exit(EXIT_FAILURE);
+		perror("fork");
+		exit(EXIT_FAILURE);
 	}
-    }
-  else
-    {
-      /* parent proccess waiting to continue */
-      wait(NULL);
-    }
-}  
+	if (pid == 0)
+	{
+		/*child process starts here */
+		if (execve(cmd, NULL, environ) == -1)
+		{
+			perror("execve");
+			exit(EXIT_FAILURE);
+		}
+	}
+	else
+	{
+		/* parent proccess waiting to continue */
+		wait(NULL);
+	}
+}
