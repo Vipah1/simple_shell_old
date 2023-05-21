@@ -137,3 +137,24 @@ char **tokenize(char *s, const char *delimiter)
 	free(tmp);
 	return (arr);
 }
+
+/**
+ * build_path - this functions builds thepath from a command
+ * @token: this is the given command
+ * @value: this is the path to build
+ * Return: the path for @token/@value
+ */
+char *build_path(cahr *token, char *value)
+{
+  char *cmd;
+  size_t len;
+  len = _strlen(value) + _strlen(token) + 2);
+cmd = malloc(sizeof(char) * len);
+if (!cmd)
+  return (NULL);
+memset(cmd, 0, len);
+cmd = strcat(cmd, value);
+cmd = strcat(cmd, "/");
+cmd = strcat(cmd, token);
+return (cmd);
+}

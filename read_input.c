@@ -8,12 +8,13 @@ char *read_input(size_t *bufsize)
 {
 	char *input = NULL;
 	ssize_t nread;
+	size_t len = 0;
 
-	nread = getline(&input, bufsize, stdin);
+	nread = getline(&input, &len, stdin);
 	if (nread == -1)
 	{
 		/*handle end-of-file*/
-		if (feof(stdin))
+		/*if (feof(stdin))
 		{
 			free(input);
 			_putchar('\n');
@@ -23,8 +24,11 @@ char *read_input(size_t *bufsize)
 		{
 			perror("getline error");
 			exit(EXIT_FAILURE);
-		}
+		}*/
+	  return (-1);
 	}
+	if (*input == '\n' || *input == '\0')
+	  continue;
 	/* removes trailing new line character */
 	if (input[nread - 1] == '\n')
 		input[nread - 1] = '\0';

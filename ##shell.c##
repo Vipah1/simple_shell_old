@@ -23,21 +23,7 @@ int main(int argc __attribute__((Unused)), char *argv[])
 	  if (*cmd == '\n' || *cmd == '\0')
 	    continue;
 	  cmd = rm_newline(cmd);
-	  tokens = tokenize(cmd);
-	  if (!tokens || !tokens[0])
-	    continue;
-	  builtin = check_builtin(tokens);
-	  if (builtin)
-	    {
-	      status = builtin(tokens, status, argv[0]);
-	      free_memory_pp(tokens);
-	      continue;
-	    }
-	  else
-	    {
-	      status = exec_cmd(tokens, argv[0]);
-	    }
-	  free_memory_pp(tokens);
+		exec_cmd(cmd);
 	}
 	return (0);
 }

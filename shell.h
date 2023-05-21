@@ -17,7 +17,8 @@ extern char **environ;
 
 void _prompt(void);
 char *read_input(size_t *bufsize);
-void exec_cmd(char *cmd);
+int exec_cmd(char **cmd, char *filename);
+char *build_path(char *cmd, char *value);
 char **tokenize(char *s, const char *delimiter);
 /* printing tools */
 int _putchar(char c);

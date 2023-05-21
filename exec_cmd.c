@@ -2,6 +2,7 @@
 /**
  * exec_cmd - this unction executes received input as commands
  * @cmd: the command to be execcuted
+ * @filename: the name of the shell program
  * Return: this is a void function
  */
 int exec_cmd(char **cmd, char *filename)
