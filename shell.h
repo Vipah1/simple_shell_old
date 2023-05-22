@@ -16,6 +16,13 @@
 #define TRUE 1
 #define FALSE 0
 
+typedef struct builtin_t
+{
+	char *name;
+	void (*func)(char **, int, char *);
+
+} builtin_t;
+
 extern char **environ;
 
 void _prompt(void);
