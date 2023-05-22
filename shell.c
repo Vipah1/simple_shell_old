@@ -57,7 +57,7 @@ int check_cmd_path(char **cmd)
       cmd_path = build_path(*cmd, value);
       if (stat(cmd_path, &buf) == 0)
 	{
-	  *cmd = strdup(cmd_path);
+	  *cmd = _strdup(cmd_path);
 	  free(cmd_path);
 	  return (0);
 	}

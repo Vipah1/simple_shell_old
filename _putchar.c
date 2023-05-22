@@ -20,3 +20,14 @@ void _puts(char *str)
 	for (i = 0; str[i] != '\0'; i++)
 		_putchar(str[i]);
 }
+/**
+ *print - this funnction prints a string
+ * @str: the string
+ * Return: number of bytes of str
+ */
+int print(char *str)
+{
+
+  int n_bytes = _strlen(str);
+  return (write(STDOUT_FILENO, str, n_bytes));
+}

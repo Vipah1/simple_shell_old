@@ -1,0 +1,33 @@
+#include "shell.h"
+/**
+ * _strstr - this function implements the strstr function
+ * @haystaack: needle in a haystack
+ * @needle: the needle (string to be searched)
+ * Return: returns a pointer to the first character of the needle
+ */
+char *_strstr(char *haystack, char *needle)
+{
+  while (*haystack)
+    {
+      if ((*haystack == *needle) && cmp(haystack, needle))
+	{
+	  return (haystack);
+	}
+      haystack++;
+    }
+  return (NULL);
+}
+/**
+ * _strcpy - this function copies the content of a string to another
+ * @dest: the destination of the the string
+ * @src: the sourcce of the copied string
+ * Return: the destination
+ */
+char *_strcpy(char *dest, const char *src)
+{
+  char *temp = dest;
+  while (*src)
+    *temp++ = *src++;
+  *temp = '\0';
+  return (dest);
+}

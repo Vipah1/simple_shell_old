@@ -153,8 +153,8 @@ cmd = malloc(sizeof(char) * len);
 if (!cmd)
   return (NULL);
 memset(cmd, 0, len);
-cmd = strcat(cmd, value);
-cmd = strcat(cmd, "/");
-cmd = strcat(cmd, token);
+cmd = _strcat(cmd, value);
+cmd = _strcat(cmd, "/");
+cmd = _strcat(cmd, token);
 return (cmd);
 }

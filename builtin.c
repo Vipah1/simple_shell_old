@@ -44,7 +44,7 @@ int env_cmd(char **cmd, int status, char *filename)
   for (i = 0; environ[i]; i++)
     {
       print(environ[i]);
-      _puts('\n');
+      _putchar('\n');
     }
   return (0);
 }

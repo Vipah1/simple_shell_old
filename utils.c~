@@ -1,0 +1,14 @@
+#include "shell.h"
+/**
+ * free_memory-p - this function frees a pointer
+ * @ptr: the pointer to be freeed
+ */
+void free_memory_p(char *ptr)
+{
+  if (ptr != NULL)
+    {
+      free(ptr);
+      ptr = NULL;
+    }
+  ptr = NULL;
+}
