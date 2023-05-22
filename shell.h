@@ -16,13 +16,6 @@
 #define TRUE 1
 #define FALSE 0
 
-typedef struct builtin_t
-{
-	char *name;
-	void (*func)(char **, int, char *);
-
-} builtin_t;
-
 extern char **environ;
 
 void _prompt(void);
@@ -30,16 +23,6 @@ char *read_input(size_t *bufsize);
 int exec_cmd(char **cmd, char *filename);
 char *build_path(char *cmd, char *value);
 char **tokenize(char *s, const char *delimiter);
-builtin_t is_builtin(char *cmd);
-int (*check_builtins(char **cmd))(char **, int, char *);
-int env_cmd(char **cmd, int status, char *filename);
-int exit_cmd(char **cmd, int status, char *filename);
-int check_cmd_path(char **cmd);
-char *rm_newline(char **cmd);
-char *build_path(char *token, char *value);
-void free_memory_p(char *ptr);
-void free_memory_pp(char **ptr);
-char *_getenv(const char *name);
 
 /* printing tools */
 int _putchar(char c);
@@ -53,12 +36,6 @@ char *_strstr(char *haystack, char *needle);
 char *_strcpy(char *dest, const char *src);
 char *_strcat(char *dest, const char *src);
 int _strcmp(char *s1, char *s2);
-<<<<<<< HEAD
-int cmp(const char *s1, const char *s2);
-int _isalpha(char c);
-int _atoi(char *s);
-=======
->>>>>>> a45dd6e4876e693f715e31d494e1fbb1aef2b47c
 
 char *_getenv(const char *name);
 
@@ -71,7 +48,7 @@ typedef struct builtin_t
 {
   char *cmd;
   int (*f)(char **, int, char *);
-}builtin_t;
+} builtin_t;
 
 /* utils */
 void free_memory_p(char *);
