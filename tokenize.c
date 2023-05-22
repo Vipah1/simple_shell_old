@@ -144,17 +144,19 @@ char **tokenize(char *s, const char *delimiter)
  * @value: this is the path to build
  * Return: the path for @token/@value
  */
-char *build_path(cahr *token, char *value)
+char *build_path(char *token, char *value)
 {
-  char *cmd;
-  size_t len;
-  len = _strlen(value) + _strlen(token) + 2);
-cmd = malloc(sizeof(char) * len);
-if (!cmd)
-  return (NULL);
-memset(cmd, 0, len);
-cmd = _strcat(cmd, value);
-cmd = _strcat(cmd, "/");
-cmd = _strcat(cmd, token);
-return (cmd);
+	char *cmd;
+	size_t len;
+	
+	len = _strlen(value) + _strlen(token) + 2;
+	cmd = malloc(sizeof(char) * len);
+	if (!cmd)
+		return (NULL);
+	
+	memset(cmd, 0, len);
+	cmd = _strcat(cmd, value);
+	cmd = _strcat(cmd, "/");
+	cmd = _strcat(cmd, token);
+	return (cmd);
 }
