@@ -66,3 +66,14 @@ int check_cmd_path(char **cmd)
     }
   return (1);
 }
+/**
+ *rm_newline - this functions removes the trailing newline character
+ * @cmd: the input from the user
+ * Return: returns the altered input received
+ */
+char *rm_newline(char *cmd)
+{
+  char *tmp = cmd;
+  tmp = strtok(tmp, "\n");
+  return (tmp);
+}
