@@ -8,7 +8,7 @@ char *_getenv(const char *name)
 {
 	int i = 0;
 	int j = 0;
-	
+
 	while (environ[i])
 	{
 		while (environ[i][j] && *name)

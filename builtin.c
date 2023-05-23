@@ -2,7 +2,7 @@
 /**
  * is_builtin -this function schecks if the command is a uiltin command
  * @cmd: this is the command received
- * Return: returns the position of the command in the builtin   array else return -1
+ * Return: returns position of the command in builtin array else -1
  */
 builtin_t is_builtin(char *cmd)
 {
@@ -12,6 +12,7 @@ builtin_t is_builtin(char *cmd)
 		{NULL, NULL}
 	};
 	int i;
+
 	for (i = 0; builtins[i].cmd; i++)
 		if (_strcmp(builtins[i].cmd, cmd) == 0)
 			return (builtins[i]);
@@ -26,7 +27,7 @@ builtin_t is_builtin(char *cmd)
 int (*check_builtins(char **cmd))(char **, int, char *)
 {
 	builtin_t b = is_builtin(cmd[0]);
-	
+
 	if (b.cmd)
 		return (b.f);
 	return (NULL);
@@ -36,11 +37,13 @@ int (*check_builtins(char **cmd))(char **, int, char *)
  * env_cmd - this function is a builtin implementation of the env command
  * @cmd: Unused
  * @status: this is the status of the program
+ * @filename: file name
  * Return: 0
  */
 int env_cmd(char **cmd, int status, char *filename)
 {
 	int i;
+
 	(void) cmd;
 	(void) status;
 	(void) filename;
@@ -54,14 +57,15 @@ int env_cmd(char **cmd, int status, char *filename)
 
 /**
  * exit_cmd - this is a builtin implementation of the exit command
- * @cmd: anthis is an array of the given command 
+ * @cmd: anthis is an array of the given command
  * @status: this is the status of the program
- * Return: this exits the program with given status ccode
+ * @filename: file name
+ * Return: this exits the program with given status code
  */
 int exit_cmd(char **cmd, int status, char *filename __attribute__((unused)))
 {
 	int i = 0;
-	
+
 	if (!cmd[1])
 	{
 		free_memory_pp(cmd);

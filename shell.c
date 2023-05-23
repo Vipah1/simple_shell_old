@@ -13,7 +13,7 @@ int main(int argc __attribute__((unused)), char *argv[])
 	size_t len = 0;
 	ssize_t nread;
 	int status = 0;
-	
+
 	while (1)
 	{
 		_prompt();
@@ -23,7 +23,8 @@ int main(int argc __attribute__((unused)), char *argv[])
 		if (*cmd == '\n' || *cmd == '\0')
 			continue;
 		cmd = rm_newline(cmd);
-		tokens = tokenize(cmd, " "); /* second argument is the delimiter that splits the string */
+		tokens = tokenize(cmd, " ");
+		/* second argument is the delimiter that splits the string */
 		if (!tokens || !tokens[0])
 			continue;
 		builtin = check_builtins(tokens);
@@ -51,7 +52,7 @@ int check_cmd_path(char **cmd)
 {
 	char *path, *value, *cmd_path;
 	struct stat buf;
-	
+
 	path = _getenv("PATH");
 	value = strtok(path, ":");
 	while (value)
@@ -77,7 +78,7 @@ int check_cmd_path(char **cmd)
 char *rm_newline(char *cmd)
 {
 	char *tmp = cmd;
-	
+
 	tmp = strtok(tmp, "\n");
 	return (tmp);
 }

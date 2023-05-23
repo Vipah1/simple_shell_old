@@ -41,26 +41,27 @@ int cmp(const char *s1, const char *s2)
 	return (*s2 == '\0');
 }
 
-/** 
- * isalpha - this function checks if a character is a letter
+/**
+ * _isalpha - this function checks if a character is a letter
  * @c: the given character
  * Return: returns true if true or false
  */
 int _isalpha(char c)
 {
 	if ((c >= 48) && (c <= 57))
-		return(FALSE);
+		return (FALSE);
 	return (TRUE);
 }
 
-/** _atoi - this function converts a string to an integer
+/**
+ *  _atoi - this function converts a string to an integer
  * @s: the string to be converted
  * Return: returns int
  */
 int _atoi(char *s)
 {
 	int len, i = 0, FLAG = 0, d = 0, n = 0, digit;
-	
+
 	for (len = 0; s[len] != '\0'; len++)
 		;
 	while (i < len && FLAG == 0)

@@ -14,17 +14,19 @@ char *read_input(size_t *bufsize __attribute__((unused)))
 	if (nread == -1)
 	{
 		/*handle end-of-file*/
-		/*if (feof(stdin))
-		{
-			free(input);
-			_putchar('\n');
-			return (NULL);
-		}
-		else
-		{
-			perror("getline error");
-			exit(EXIT_FAILURE);
-		}*/
+		/**
+		*if (feof(stdin))
+		*{
+		*	free(input);
+		*	_putchar('\n');
+		*	return (NULL);
+		*}
+		*else
+		*{
+		*	perror("getline error");
+		*	exit(EXIT_FAILURE);
+		*}
+		*/
 		return (NULL);
 	}
 	if (*input == '\n' || *input == '\0')

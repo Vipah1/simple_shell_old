@@ -46,8 +46,8 @@ char *_getenv(const char *name);
  */
 typedef struct builtin_t
 {
-  char *cmd;
-  int (*f)(char **, int, char *);
+	char *cmd;
+	int (*f)(char **, int, char *);
 } builtin_t;
 
 /* utils */

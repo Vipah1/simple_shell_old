@@ -9,8 +9,9 @@ int exec_cmd(char **cmd, char *filename __attribute__((unused)))
 {
 	pid_t pid;
 	int status;
+
 	if (!*cmd)
-	  exit(-1);
+		exit(-1);
 	pid = fork();
 	if (pid == -1)
 	{
@@ -19,10 +20,10 @@ int exec_cmd(char **cmd, char *filename __attribute__((unused)))
 	}
 	if (pid == 0)
 	{
-	  if (strncmp(cmd[0], "./", 2) && strncmp(cmd[0], "./", 1))
-	    {
-	      check_cmd_path(cmd);
-	    }
+		if (strncmp(cmd[0], "./", 2) && strncmp(cmd[0], "./", 1))
+		{
+			check_cmd_path(cmd);
+		}
 		/*child process starts here */
 		if (execve(cmd[0], cmd, environ) == -1)
 		{
@@ -36,9 +37,9 @@ int exec_cmd(char **cmd, char *filename __attribute__((unused)))
 		/* parent proccess waiting to continue */
 		wait(&status);
 		if (WIFEXITED(status))
-		  {
-		    return (WEXITSTATUS(status));
-		  }
+		{
+			return (WEXITSTATUS(status));
+		}
 	}
 	return (0);
 }
