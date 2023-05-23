@@ -25,10 +25,10 @@ char *read_input(size_t *bufsize __attribute__((unused)))
 			perror("getline error");
 			exit(EXIT_FAILURE);
 		}*/
-		return (-1);
+		return (NULL);
 	}
 	if (*input == '\n' || *input == '\0')
-		continue;
+		/*continue*/;
 	/* removes trailing new line character */
 	if (input[nread - 1] == '\n')
 		input[nread - 1] = '\0';

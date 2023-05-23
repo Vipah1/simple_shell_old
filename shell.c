@@ -5,7 +5,7 @@
  * @argv: this is an array of comman line arguments parsed to the command name
  * Return: 0 on sucess
  */
-int main(int argc __attribute__((Unused)), char *argv[])
+int main(int argc __attribute__((unused)), char *argv[])
 {
 	int (*builtin)(char **, int, char *);
 	char **tokens;
