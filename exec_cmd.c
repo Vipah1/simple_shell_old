@@ -5,7 +5,7 @@
  * @filename: the name of the shell program
  * Return: this is a void function
  */
-int exec_cmd(char **cmd, char *filename)
+int exec_cmd(char **cmd, char *filename __attribute__((unused)))
 {
 	pid_t pid;
 	int status;

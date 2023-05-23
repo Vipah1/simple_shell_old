@@ -6,17 +6,18 @@
  */
 builtin_t is_builtin(char *cmd)
 {
-  builtin_t builtins[] = {
-			  {"exit", exit_cmd},
-			  {"env", env_cmd},
-			  {NULL, NULL}
-  };
-  int i;
-  for (i = 0; builtins[i].cmd; i++)
-    if (_strcmp(builtins[i].cmd, cmd) == 0)
-      return (builtins[i]);
-  return (builtins[i]);
+	builtin_t builtins[] = {
+		{"exit", exit_cmd},
+		{"env", env_cmd},
+		{NULL, NULL}
+	};
+	int i;
+	for (i = 0; builtins[i].cmd; i++)
+		if (_strcmp(builtins[i].cmd, cmd) == 0)
+			return (builtins[i]);
+	return (builtins[i]);
 }
+
 /**
  * check_builtins - his function runs f the command is a builtin command
  * @cmd: this is the argv of the command arguments
@@ -24,11 +25,13 @@ builtin_t is_builtin(char *cmd)
  */
 int (*check_builtins(char **cmd))(char **, int, char *)
 {
-  builtin_t b = is_builtin(cmd[0]);
-  if (b.cmd)
-    return (b.f);
-  return (NULL);
+	builtin_t b = is_builtin(cmd[0]);
+	
+	if (b.cmd)
+		return (b.f);
+	return (NULL);
 }
+
 /**
  * env_cmd - this function is a builtin implementation of the env command
  * @cmd: Unused
@@ -37,45 +40,47 @@ int (*check_builtins(char **cmd))(char **, int, char *)
  */
 int env_cmd(char **cmd, int status, char *filename)
 {
-  int i;
-  (void) cmd;
-  (void) status;
-  (void) filename;
-  for (i = 0; environ[i]; i++)
-    {
-      print(environ[i]);
-      _putchar('\n');
-    }
-  return (0);
+	int i;
+	(void) cmd;
+	(void) status;
+	(void) filename;
+	for (i = 0; environ[i]; i++)
+	{
+		print(environ[i]);
+		_putchar('\n');
+	}
+	return (0);
 }
+
 /**
  * exit_cmd - this is a builtin implementation of the exit command
  * @cmd: anthis is an array of the given command 
  * @status: this is the status of the program
  * Return: this exits the program with given status ccode
  */
-int exit_cmd(char **cmd, int status, char *filename)
+int exit_cmd(char **cmd, int status, char *filename __attribute__((unused)))
 {
-  int i = 0;
-  if (!cmd[1])
-    {
-      free_memory_pp(cmd);
-      exit(status);
-    }
-  while (cmd[1][i])
-    {
-      if _isalpha(cmd[1][i] && cmd[1][i] != '-')
-		   {
-		     print(filename);
-		     print(": ");
-		     print("Illegal number: ");
-		     print(cmd[1]);
-		     _putchar('\n');
-		     return (1);
-		   }
-      i++;
-    }
-  status = _atoi(cmd[1]);
-  free_memory_pp(cmd);
-  exit(status);
+	int i = 0;
+	
+	if (!cmd[1])
+	{
+		free_memory_pp(cmd);
+		exit(status);
+	}
+	while (cmd[1][i])
+	{
+		if (_isalpha(cmd[1][i]) && cmd[1][i] != '-')
+		{
+			print(filename);
+			print(": ");
+			print("Illegal number: ");
+			print(cmd[1]);
+			_putchar('\n');
+			return (1);
+		}
+		i++;
+	}
+	status = _atoi(cmd[1]);
+	free_memory_pp(cmd);
+	exit(status);
 }

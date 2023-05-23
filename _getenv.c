@@ -6,23 +6,24 @@
  */
 char *_getenv(const char *name)
 {
-  int i = 0;
-  int j = 0;
-  while (environ[i])
-    {
-      while (environ[i][j] && *name)
+	int i = 0;
+	int j = 0;
+	
+	while (environ[i])
 	{
-	  if (environ[i][j] != *name || (environ[i][j] == '='))
-	    {
-	      break;
-	    }
-	  j++, name++;
+		while (environ[i][j] && *name)
+		{
+			if (environ[i][j] != *name || (environ[i][j] == '='))
+			{
+				break;
+			}
+			j++, name++;
+		}
+		if (environ[i][j] == '=' && !*name)
+		{
+			return ((*(environ + i) + ++j));
+		}
+		i++;
 	}
-      if (environ[i][j] == '=' && !*name)
-	{
-	  return ((*(envron + i) + ++j));
-	}
-      i++;
-    }
-  return (NULL);
+	return (NULL);
 }

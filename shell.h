@@ -57,7 +57,7 @@ int cmp(const char *s1, const char *s2);
 int _atoi(char *s);
 int _isalpha(char c);
 
-char *check_cmd_path(char **cmd);
+int check_cmd_path(char **cmd);
 char *rm_newline(char *cmd);
 /* builtins */
 int exit_cmd(char **, int, char *);

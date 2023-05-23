@@ -4,7 +4,7 @@
  * @bufsize: the size or length of the input
  * Return: Returns input from the user
  */
-char *read_input(size_t *bufsize)
+char *read_input(size_t *bufsize __attribute__((unused)))
 {
 	char *input = NULL;
 	ssize_t nread;
@@ -25,10 +25,10 @@ char *read_input(size_t *bufsize)
 			perror("getline error");
 			exit(EXIT_FAILURE);
 		}*/
-	  return (-1);
+		return (-1);
 	}
 	if (*input == '\n' || *input == '\0')
-	  continue;
+		continue;
 	/* removes trailing new line character */
 	if (input[nread - 1] == '\n')
 		input[nread - 1] = '\0';

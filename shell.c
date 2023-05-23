@@ -7,40 +7,41 @@
  */
 int main(int argc __attribute__((Unused)), char *argv[])
 {
-  int (*builtin)(char **, int, char *);
-  char **tokens
+	int (*builtin)(char **, int, char *);
+	char **tokens;
 	char *cmd;
 	size_t len = 0;
-
 	ssize_t nread;
 	int status = 0;
+	
 	while (1)
 	{
-	  _prompt();
-	  nread = getline(&cmd, &len, stdin);
-	  if (nread == -1)
-	    return (-1);
-	  if (*cmd == '\n' || *cmd == '\0')
-	    continue;
-	  cmd = rm_newline(cmd);
-	  tokens = tokenize(cmd);
-	  if (!tokens || !tokens[0])
-	    continue;
-	  builtin = check_builtin(tokens);
-	  if (builtin)
-	    {
-	      status = builtin(tokens, status, argv[0]);
-	      free_memory_pp(tokens);
-	      continue;
-	    }
-	  else
-	    {
-	      status = exec_cmd(tokens, argv[0]);
-	    }
-	  free_memory_pp(tokens);
+		_prompt();
+		nread = getline(&cmd, &len, stdin);
+		if (nread == -1)
+			return (-1);
+		if (*cmd == '\n' || *cmd == '\0')
+			continue;
+		cmd = rm_newline(cmd);
+		tokens = tokenize(cmd, " "); /* second argument is the delimiter that splits the string */
+		if (!tokens || !tokens[0])
+			continue;
+		builtin = check_builtins(tokens);
+		if (builtin)
+		{
+			status = builtin(tokens, status, argv[0]);
+			free_memory_pp(tokens);
+			continue;
+		}
+		else
+		{
+			status = exec_cmd(tokens, argv[0]);
+		}
+		free_memory_pp(tokens);
 	}
 	return (0);
 }
+
 /**
  * check_cmd_path - this function checks if the command exists in the path
  * @cmd: the command
@@ -48,32 +49,35 @@ int main(int argc __attribute__((Unused)), char *argv[])
  */
 int check_cmd_path(char **cmd)
 {
-  char *path, *value, *cmd_path;
-  struct stat buf;
-  path = _getenv("PATH");
-  value = strtok(path, ":");
-  while (value)
-    {
-      cmd_path = build_path(*cmd, value);
-      if (stat(cmd_path, &buf) == 0)
+	char *path, *value, *cmd_path;
+	struct stat buf;
+	
+	path = _getenv("PATH");
+	value = strtok(path, ":");
+	while (value)
 	{
-	  *cmd = _strdup(cmd_path);
-	  free(cmd_path);
-	  return (0);
+		cmd_path = build_path(*cmd, value);
+		if (stat(cmd_path, &buf) == 0)
+		{
+			*cmd = _strdup(cmd_path);
+			free(cmd_path);
+			return (0);
+		}
+		free(cmd_path);
+		value = strtok(NULL, ":");
 	}
-      free(cmd_path);
-      value = strtok(NULL, ":");
-    }
-  return (1);
+	return (1);
 }
+
 /**
- *rm_newline - this functions removes the trailing newline character
+ * rm_newline - this functions removes the trailing newline character
  * @cmd: the input from the user
  * Return: returns the altered input received
  */
 char *rm_newline(char *cmd)
 {
-  char *tmp = cmd;
-  tmp = strtok(tmp, "\n");
-  return (tmp);
+	char *tmp = cmd;
+	
+	tmp = strtok(tmp, "\n");
+	return (tmp);
 }
