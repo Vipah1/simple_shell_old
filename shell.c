@@ -23,7 +23,7 @@ int main(int argc __attribute__((unused)), char *argv[])
 		if (*cmd == '\n' || *cmd == '\0')
 			continue;
 		cmd = rm_newline(cmd);
-		tokens = tokenize(cmd, " ");
+		tokens = tokenize2(cmd);
 		/* second argument is the delimiter that splits the string */
 		if (!tokens || !tokens[0])
 			continue;
