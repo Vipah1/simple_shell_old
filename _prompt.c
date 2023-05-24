@@ -5,7 +5,7 @@
  */
 void _prompt(void)
 {
-  int p_1, s_1, t_1;
+  /*  int p_1, s_1, t_1;
   char *p, *s, *t = "> ";
   char *prompt = NULL;
 
@@ -25,5 +25,6 @@ void _prompt(void)
   prompt = _strcat(prompt, s);
   prompt = _strcat(prompt, t);
   _puts(prompt);
-  /*  free(prompt);*/
+  free(prompt);*/
+  _puts("$ ");
 }
