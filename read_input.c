@@ -38,3 +38,30 @@ char *read_input(size_t *bufsize __attribute__((unused)))
 		input[nread - 1] = '\0';
 	return (input);
 }
+/**
+ * tokenize2 - function to handle commandline with arguments
+ * @cmd: the command with arguments
+ * Return: an array of tokens
+ */
+char **tokenize2(char *cmd)
+{
+  char **tokens;
+  char *tok, *temp;
+  int i;
+  if (!tokens)
+    {
+      perror("token error");
+      return (NULL);
+    }
+  cmd = rm_newline(cmd);
+  temp = _strdup(cmd);
+  tok = strtok(temp, " ");
+  for (i = 0; tok; i++)
+    {
+      token[i] = _strdup(tok);
+      tok = strtok(NULL, " ");
+    }
+  tokens[i] = NULL;
+  free(temp);
+  return (tokens);
+}
