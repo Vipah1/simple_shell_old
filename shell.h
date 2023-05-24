@@ -23,6 +23,7 @@ char *read_input(size_t *bufsize);
 int exec_cmd(char **cmd, char *filename);
 char *build_path(char *cmd, char *value);
 char **tokenize(char *s, const char *delimiter);
+char **tokenize2(char *cmd);
 
 /* printing tools */
 int _putchar(char c);
