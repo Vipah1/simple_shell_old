@@ -16,7 +16,10 @@ int main(int argc __attribute__((unused)), char *argv[])
 
 	while (1)
 	{
+	  if (isatty(STDIN_FILENO))
+	    {
 		_prompt();
+	    }
 		nread = getline(&cmd, &len, stdin);
 		if (nread == -1)
 			return (-1);
