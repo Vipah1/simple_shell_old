@@ -48,6 +48,7 @@ char **tokenize2(char *cmd)
   char **tokens;
   char *tok, *temp;
   int i;
+  tokens = malloc(sizeof(char *) * _strlen(cmd));
   if (!tokens)
     {
       perror("token error");
@@ -58,7 +59,7 @@ char **tokenize2(char *cmd)
   tok = strtok(temp, " ");
   for (i = 0; tok; i++)
     {
-      token[i] = _strdup(tok);
+      tokens[i] = _strdup(tok);
       tok = strtok(NULL, " ");
     }
   tokens[i] = NULL;
