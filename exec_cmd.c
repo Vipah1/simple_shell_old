@@ -16,7 +16,7 @@ int exec_cmd(char **cmd, char *filename __attribute__((unused)))
 	if (pid == -1)
 	{
 		perror("fork");
-		exit(EXIT_FAILURE);
+		exit(-1);
 	}
 	if (pid == 0)
 	{

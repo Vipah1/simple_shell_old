@@ -20,8 +20,8 @@ extern char **environ;
 
 void _prompt(void);
 char *read_input(size_t *bufsize);
-int exec_cmd(char **cmd, char *filename);
-char *build_path(char *cmd, char *value);
+int exec_cmd(char **cmd, char *filename __attribute__((unused)));
+char *build_path(char *token, char *value);
 char **tokenize(char *s, const char *delimiter);
 char **tokenize2(char *cmd);
 

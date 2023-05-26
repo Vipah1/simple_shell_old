@@ -17,7 +17,7 @@ void _prompt(void)
   prompt = malloc(p_1 + s_1 + t_1 + 1);
   if (!p || !s || !prompt)
     {
-	print("$ ");
+	_puts("$ ");
 	return;
     }
   prompt = _strcpy(prompt, p);

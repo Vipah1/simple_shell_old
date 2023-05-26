@@ -21,6 +21,7 @@ char *read_input(size_t *bufsize __attribute__((unused)))
 		/*handle end-of-file*/
 	  free(input);
 	  return (NULL);
+	}
 	/* removes trailing new line character */
 	if (input[nread - 1] == '\n')
 		input[nread - 1] = '\0';
@@ -36,6 +37,8 @@ char **tokenize2(char *cmd)
   char **tokens;
   char *tok, *temp;
   int i;
+  if (!cmd)
+    return (NULL);
   tokens = malloc(sizeof(char *) * _strlen(cmd));
   if (!tokens)
     {

@@ -26,7 +26,7 @@ int main(int argc __attribute__((unused)), char *argv[])
 		if (*cmd == '\n' || *cmd == '\0')
 			continue;
 		cmd = rm_newline(cmd);
-		tokens = tokenize(cmd, " ");
+		tokens = tokenize2(cmd);
 		/* second argument is the delimiter that splits the string */
 		if (!tokens || !tokens[0])
 			continue;
@@ -80,11 +80,14 @@ int check_cmd_path(char **cmd)
  */
 char *rm_newline(char *cmd)
 {
-  size_t len = _strlen(cmd);
+  /*size_t len = _strlen(cmd);
   if (len > 0 && cmd[len -1] == '\n')
     {
       cmd[len - 1] = '\0';
     }
   char *tmp = _strdup(cmd);
-	return (tmp);
+  return (tmp);*/
+  char *tmp = cmd;
+  tmp = strtok(tmp, "\n");
+  return (tmp);
 }

@@ -62,7 +62,7 @@ int env_cmd(char **cmd, int status, char *filename)
  * @filename: file name
  * Return: this exits the program with given status code
  */
-int exit_cmd(char **cmd, int status, char *filename __attribute__((unused)))
+int exit_cmd(char **cmd, int status, char *filename)
 {
 	int i = 0;
 
@@ -78,7 +78,7 @@ int exit_cmd(char **cmd, int status, char *filename __attribute__((unused)))
 			print(filename);
 			print(": ");
 			print("Illegal number: ");
-			print(cmd[1]);
+			print(cmd[0]);
 			_putchar('\n');
 			return (1);
 		}
