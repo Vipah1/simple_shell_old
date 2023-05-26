@@ -57,3 +57,43 @@ char **tokenize2(char *cmd)
   free(temp);
   return (tokens);
 }
+/**
+ * _getline - this function reads a line of input from the user
+ * Return: Returns the input as string
+ */
+char *_getline(void)
+{
+  int buffer_size = BUFFER_SIZE;
+  int i = 0;
+  char *buffer = malloc(sizeof(char) * buffer_size);
+  int c;
+  if (!buffer)
+    {
+      perror("Meemoery allocation error");
+      exit(EXIT_FAILURE);
+    }
+  while (1)
+    {
+      c = getchar();
+      if (c == EOF || c == '\n')
+	{
+	  buffer[i] = '\0';
+	  return (buffer);
+	}
+      else
+	{
+	  buffer[i] = c;
+	}
+      i++;
+      if (i >= buffer_size)
+	{
+	  buffer_size += BUFFER_SIZE;
+	  buffer = realloc(buffer, buffer_size);
+	  if (!buffer)
+	    {
+	      perror("Memory allocation error");
+	      exit(EXIT_FAILURE);
+	    }
+	}
+    }
+}
