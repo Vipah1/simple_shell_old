@@ -8,7 +8,8 @@ int cd_cmd(char **args)
 {
   if (args[1] == NULL)
     {
-      print(stderr, "Expeceted argument to change directory");
+      print(stderr);
+     _puts( "Expeceted argument to change directory");
       return (-1);
     }
   if (chdir(args[1]) != 0)

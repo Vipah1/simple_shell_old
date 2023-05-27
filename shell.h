@@ -27,7 +27,7 @@ int exec_cmd(char **cmd, char *filename __attribute__((unused)));
 char *build_path(char *token, char *value);
 char **tokenize(char *s, const char *delimiter);
 char **tokenize2(char *cmd);
-char **split_line(char *cmd)
+char **split_line(char *cmd);
 /* in env.c */
 int env_cmd(char **args);
 int setenv_cmd(char **args);
@@ -40,7 +40,7 @@ int execute(char **args);
 int _putchar(char c);
 void _puts(char *str);
 int print(struct _IO_FILE *str);
-char *_getline(char *file __attribute__((unused)));
+char *_getline(void);
 /* string manipulating tools */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 int _strlen(char *s);

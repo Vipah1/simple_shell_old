@@ -11,14 +11,14 @@ int main(int argc, char **argv)
   int num_cmd;
   if (argc > 1)
     {
-      // execute commads frooma file
+      /* execute commads frooma file */
       FILE *file = fopen(argv[1], "r");
       if (file == NULL)
 	{
 	  perror("Error opening file");
 	  return (EXIT_FAILURE);
 	}
-      while ((cmd = _getline(file)) != NULL)
+      while ((cmd = _getline()) != NULL) /*was: _getline(file)*/
 	{
 	  cmds = split_line(cmd);
 	  num_cmd = 0;
@@ -33,7 +33,7 @@ int main(int argc, char **argv)
       fclose(file);
       return (EXIT_SUCCESS);
     }
-  // INTERACTIVE MODE
+  /* INTERACTIVE MODE */
   do {
     printf("$ ");
     cmd = _getline();
