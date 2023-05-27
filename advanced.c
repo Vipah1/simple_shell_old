@@ -14,14 +14,14 @@ void handle_logical_operators(char **commands, int num_commands)
         if (args[0] != NULL) {
             if (strcmp(args[0], "&&") == 0) {
                 if (status == 0) {
-                    status = launch_command(args + 1);
+                    status = launch_cmd(args + 1);
                 }
             } else if (strcmp(args[0], "||") == 0) {
                 if (status != 0) {
-                    status = launch_command(args + 1);
+                    status = launch_cmd(args + 1);
                 }
             } else {
-                status = launch_command(args);
+                status = launch_cmd(args);
             }
         }
 
