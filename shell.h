@@ -27,7 +27,7 @@ int exec_cmd(char **cmd, char *filename __attribute__((unused)));
 char *build_path(char *token, char *value);
 char **tokenize(char *s, const char *delimiter);
 char **tokenize2(char *cmd);
-
+char **split_line(char *cmd)
 /* in env.c */
 int env_cmd(char **args);
 int setenv_cmd(char **args);
