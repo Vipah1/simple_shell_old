@@ -73,8 +73,10 @@ int _isalpha(char c);
 int check_cmd_path(char **cmd);
 char *rm_newline(char *cmd);
 /* builtins */
-int exit_cmd(char **cmd, int status, char *filename)
-int env_cmd(char **cmd, int status, char *filename);
+/*int exit_cmd(char **cmd, int status, char *filename)*/
+/*int env_cmd(char **cmd, int status, char *filename);*/
+int exit_cmd(char **args);
+int env_cmd(char **args);
 int cd_cmd(char **args);
 builtin_t is_builtin(char *cmd);
 int (*check_builtins(char **))(char **, int, char *);
