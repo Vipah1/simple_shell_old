@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     printf("$ ");
     cmd = _getline();
     cmds = split_line(cmd);
-    num_cd = 0;
+    num_cmd = 0;
     while (cmds[num_cmd] != NULL){
       num_cmd++;
     }

@@ -23,7 +23,7 @@ int cd_cmd(char **args)
  * @args: the array of command arguments
  * Return: 0 to exit the shell
  */
-int exit_cmd(char **args)
+int exit_cmd(char **args __attribute__((unused)))
 {
   return (0);
 }
@@ -32,7 +32,7 @@ int exit_cmd(char **args)
  * @args: the array of command arguments
  * Return: 1 n sucess
  */
-int env_cmd(char **args)
+int env_cmd(char **args __attribute__((unused)))
 {
   extern char **environ;
   char **env = environ;

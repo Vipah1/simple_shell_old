@@ -14,14 +14,14 @@ void handle_logical_operators(char **commands, int num_commands)
         if (args[0] != NULL) {
             if (strcmp(args[0], "&&") == 0) {
                 if (status == 0) {
-                    status = launch_command(args + 1);
+                    status = launch_cmd(args + 1);
                 }
             } else if (strcmp(args[0], "||") == 0) {
                 if (status != 0) {
-                    status = launch_command(args + 1);
+                    status = launch_cmd(args + 1);
                 }
             } else {
-                status = launch_command(args);
+                status = launch_cmd(args);
             }
         }
 
@@ -53,11 +53,11 @@ char *replace_variable(char *line, char *variable, char *value)
     }
 
     while ((dollar_ptr = strchr(ptr, '$')) != NULL) {
-        // Copy the text before the $
+        /* Copy the text before the $ */
         strncpy(result + result_length, ptr, dollar_ptr - ptr);
         result_length += dollar_ptr - ptr;
 
-        // Check if the $ is followed by the variable
+        /* Check if the $ is followed by the variable */
         if (strncmp(dollar_ptr + 1, variable, variable_length) == 0) {
             variable_ptr = dollar_ptr + 1;
             strncpy(result + result_length, value, value_length);
@@ -65,18 +65,18 @@ char *replace_variable(char *line, char *variable, char *value)
             variable_ptr += variable_length;
             ptr = variable_ptr;
         } else {
-            // Copy the $ and continue
+            /* Copy the $ and continue */
             strncpy(result + result_length, dollar_ptr, 1);
             result_length++;
             ptr = dollar_ptr + 1;
         }
     }
 
-    // Copy the remaining text
+    /* Copy the remaining text */
     strncpy(result + result_length, ptr, strlen(ptr));
     result_length += strlen(ptr);
 
-    // Null-terminate the result
+    /* Null-terminate the result */
     result[result_length] = '\0';
 
     return result;

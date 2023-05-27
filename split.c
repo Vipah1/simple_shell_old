@@ -23,7 +23,7 @@ char **split_line(char *cmd)
       if (i >= buffer_size)
 	{
 	  buffer_size += BUFFER_SIZE;
-	  tokens = realloc(tokens, buffer_size * sizeof(car *));
+	  tokens = realloc(tokens, buffer_size * sizeof(char *));
 	  if (!tokens)
 	    {
 	      perror("Memory allocation error");

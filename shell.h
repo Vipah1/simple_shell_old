@@ -39,8 +39,8 @@ int execute(char **args);
 /* printing tools */
 int _putchar(char c);
 void _puts(char *str);
-int print(char *str);
-char *_getline(void);
+int print(struct _IO_FILE *str);
+char *_getline(char *file __attribute__((unused)));
 /* string manipulating tools */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 int _strlen(char *s);
@@ -85,4 +85,6 @@ int (*check_builtins(char **))(char **, int, char *);
 void replace_variable_in_args(char **args);
 char *replace_variable(char *line, char *variable, char *value);
 void handle_logical_operators(char **commands, int num_commands);
+char **split_line(char *cmd);
+
 #endif

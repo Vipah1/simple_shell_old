@@ -61,7 +61,7 @@ char **tokenize2(char *cmd)
  * _getline - this function reads a line of input from the user
  * Return: Returns the input as string
  */
-char *_getline(void)
+char *_getline(char *file __attribute__((unused)))
 {
   int buffer_size = BUFFER_SIZE;
   int i = 0;

@@ -28,9 +28,9 @@ void _puts(char *str)
  * @str: the string
  * Return: number of bytes of str
  */
-int print(char *str)
+int print(struct _IO_FILE *str)
 {
-	int n_bytes = _strlen(str);
+	int n_bytes = sizeof(struct _IO_FILE *); /*_strlen(str);*/
 
 	return (write(STDOUT_FILENO, str, n_bytes));
 }

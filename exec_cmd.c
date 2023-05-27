@@ -55,8 +55,8 @@ int execute(char ** args)
   pid = fork();
   if (pid == 0)
     {
-      // child Process
-      if (execve)args[0], args) == -1)
+      /* child Process */
+      if (execve(args[0], args, environ) == -1)
       {
 	perror("Error executing command");
       }
@@ -64,12 +64,12 @@ exit(EXIT_FAILURE);
     }
  else if (pid < 0)
    {
-     // Error forking
+     /* Error forking */
      perror("Errorforking");
    }
  else
    {
-     // Parent process
+     /* Parent process */
      do
        {
 	 waitpid(pid, &status, WUNTRACED);
@@ -85,7 +85,7 @@ return 1;
  */
 int launch_cmd(char ** args)
 {
-  if (args[0], "cd" == 0)
+  if (_strcmp(args[0], "cd") == 0)
     {
       return cd_cmd(args);
     }
